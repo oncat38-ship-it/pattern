@@ -1,0 +1,78 @@
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;background:#f5f6f8;color:#222;line-height:1.6}
+header{background:#fff;padding:22px 16px;border-bottom:1px solid #ddd}
+header h1{margin:0;font-size:24px}
+header p{margin:4px 0 0;color:#666;font-size:14px}
+main{max-width:900px;margin:auto;padding:14px}
+.card{background:#fff;border:1px solid #ddd;border-radius:12px;padding:16px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+h2{font-size:18px;margin:0 0 12px}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+button,select{font:inherit}
+button{border:0;border-radius:9px;padding:10px 13px;cursor:pointer}
+.digit-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.digit-btn{font-size:22px;font-weight:700;padding:14px 8px;background:#eef1f5}
+.digit-btn:active{transform:scale(.97)}
+.secondary{background:#eef1f5}
+.danger{background:#f5dfe1;color:#8a2028}
+.note,.small{font-size:13px;color:#666}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{border:1px solid #e1e3e6;border-radius:9px;padding:10px}
+.stat .label{font-size:12px;color:#666}.stat .value{font-size:20px;font-weight:700}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:8px;border-bottom:1px solid #e5e5e5;text-align:center}
+th{background:#f7f7f7}
+.ratebar{height:8px;border-radius:4px;background:#e7e9ec;overflow:hidden}.ratebar>span{display:block;height:100%;background:#777}
+.candidate-list{display:grid;gap:8px}
+.candidate-item{border:1px solid #ddd;border-radius:9px;padding:10px}
+.candidate-item strong{font-size:20px;margin-right:8px}
+.transition-select{margin-bottom:10px}
+select{padding:8px;border:1px solid #ccc;border-radius:8px;background:#fff}
+.history{display:flex;flex-wrap:wrap;gap:5px}
+.history span{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#eef1f5;font-weight:700}
+canvas{width:100%;height:240px;display:block}
+.empty{color:#777;padding:10px 0}
+@media(max-width:600px){
+  .digit-grid{grid-template-columns:repeat(5,1fr)}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  th,td{padding:7px 4px;font-size:12px}
+}
+
+/* 9マス数字マップ */
+.number-map{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  max-width:560px;
+  margin:12px auto;
+}
+.number-cell{
+  position:relative;
+  min-height:118px;
+  border:1px solid #dfe2e6;
+  border-radius:12px;
+  padding:10px;
+  background:#f7f8fa;
+  cursor:pointer;
+  transition:transform .12s,box-shadow .12s;
+}
+.number-cell:hover{transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.number-cell .num{font-size:28px;font-weight:800}
+.number-cell .count{font-size:13px;color:#555}
+.number-cell .actual{font-size:15px;font-weight:700}
+.number-cell .expected{font-size:12px;color:#666}
+.number-cell .trend{position:absolute;right:9px;top:9px;font-size:18px;font-weight:700}
+.number-cell .delta{font-size:12px;color:#666}
+.map-legend{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:12px;color:#666}
+.map-detail{margin-top:10px;border-top:1px solid #eee;padding-top:10px}
+.detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.detail-item{background:#f7f7f7;border-radius:8px;padding:8px}
+.detail-item b{display:block;font-size:12px;color:#666}
+.detail-item span{font-size:17px;font-weight:700}
+.interval-bar{height:9px;background:#e7e9ec;border-radius:5px;overflow:hidden;margin:8px 0}
+.interval-bar span{display:block;height:100%;background:#777}
+.interval-table{margin-top:8px}
+@media(max-width:600px){
+  .number-cell{min-height:105px;padding:8px}
+  .number-cell .num{font-size:25px}
+  .detail-grid{grid-template-columns:1fr 1fr}
+}

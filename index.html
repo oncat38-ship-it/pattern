@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>0〜9 数字分析</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>0〜9 数字分析</h1>
+  <p>数字を記録して、出現率・パターン・次の候補を分析します。</p>
+</header>
+
+<main>
+<section class="card">
+  <h2>数字を記録</h2>
+  <div class="digit-grid" id="digitButtons">
+      <button class="digit-btn" data-digit="0">0</button>
+      <button class="digit-btn" data-digit="1">1</button>
+      <button class="digit-btn" data-digit="2">2</button>
+      <button class="digit-btn" data-digit="3">3</button>
+      <button class="digit-btn" data-digit="4">4</button>
+      <button class="digit-btn" data-digit="5">5</button>
+      <button class="digit-btn" data-digit="6">6</button>
+      <button class="digit-btn" data-digit="7">7</button>
+      <button class="digit-btn" data-digit="8">8</button>
+      <button class="digit-btn" data-digit="9">9</button>
+    </div>
+  <div class="row">
+    <button class="secondary" id="undoBtn">直前の1件を取り消す</button>
+    <button class="danger" id="resetBtn">すべてリセット</button>
+  </div>
+  <p class="note">※0は理論上、1〜9の各数字の1/4の出現率として計算します。</p>
+</section>
+
+<section class="card">
+  <h2>現在の集計</h2>
+  <div id="summary" class="stats"></div>
+</section>
+
+<section class="card">
+  <h2>9マス・数字マップ</h2>
+  <p class="note">1〜9の位置関係を保ったまま、期待値・実測率・最近の変化を表示します。色が濃いほど実測率が理論値から離れています。</p>
+  <div id="numberMap" class="number-map"></div>
+  <div class="map-legend">
+    <span>表示：回数 / 実測率 / 期待率</span>
+    <span>↗ 最近増加　→ 変化小　↘ 最近減少</span>
+  </div>
+  <div id="mapDetail" class="map-detail"></div>
+</section>
+
+<section class="card">
+  <h2>次の候補</h2>
+  <div id="candidate"></div>
+  <p class="note">統計上の候補です。次に出る数字を保証・予言するものではありません。</p>
+</section>
+
+<section class="card">
+  <h2>出現率</h2>
+  <div class="table-wrap"><table id="rateTable"></table></div>
+</section>
+
+<section class="card">
+  <h2>パターン分析</h2>
+  <p class="note">a=1,2,3　b=4,5,6　c=7,8,9<br>d=1,4,7　e=2,5,8　f=3,6,9</p>
+  <div class="table-wrap"><table id="patternTable"></table></div>
+</section>
+
+<section class="card">
+  <h2>出現間隔</h2>
+  <div class="transition-select">
+    <label>数字：
+      <select id="intervalDigit"></select>
+    </label>
+  </div>
+  <div id="intervalSummary"></div>
+  <div id="intervalList"></div>
+</section>
+
+<section class="card">
+  <h2>数字 → 次の数字</h2>
+  <p class="note">直前の数字ごとに、その次に何が出たかを集計します。データが1件だけの場合は集計できません。</p>
+  <div class="transition-select">
+    <label>直前の数字：
+      <select id="fromDigit"></select>
+    </label>
+  </div>
+  <div id="transitionSummary"></div>
+  <div class="table-wrap"><table id="transitionTable"></table></div>
+</section>
+
+<section class="card">
+  <h2>履歴</h2>
+  <div id="history" class="history"></div>
+</section>
+
+<section class="card">
+  <h2>最近の推移</h2>
+  <canvas id="trendChart" height="240"></canvas>
+</section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
